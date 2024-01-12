@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, RouterOutlet,TodoComponent,HoverBorderDirective],
   template: `
   <article hover-border>
-        <label><input type="checkbox" [checked]="todo!.isCompleted">{{todo!.content}}
+        <label><input type="checkbox" [checked]="todo!.isCompleted" (click)="onCheck()">{{todo!.content}}
         <div class="option">
           <a href="">Edit</a>
           <a href="">Delete</a>
@@ -23,5 +23,11 @@ export class TodoComponent {
   
   @Input('value') 
   todo : Todo | undefined;
+
+  onCheck(){
+    if(this.todo){
+      this.todo.isCompleted = !this.todo?.isCompleted
+    }
+  }
 
 }

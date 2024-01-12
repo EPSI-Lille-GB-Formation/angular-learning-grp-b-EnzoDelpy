@@ -20,7 +20,7 @@ export class AppComponent {
   todolist = TODOS;
 
   constructor(){
-    console.table(this.todolist);
+    
   }
 
   selectTodo(id : number){

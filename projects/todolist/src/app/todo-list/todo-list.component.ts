@@ -4,6 +4,8 @@ import { RouterOutlet } from '@angular/router';
 import { TODOS } from '../mock-todo';
 import { HoverBorderDirective } from '../hover-border.directive';
 import { TodoComponent } from '../todo/todo.component';
+import { TodoService } from '../todo.service';
+import { Todo } from '../todo';
 
 @Component({
   selector: 'app-todolist',
@@ -19,8 +21,8 @@ import { TodoComponent } from '../todo/todo.component';
         <div *ngSwitchCase="undefined">Toutes</div>
     </span>
 </h3>
-  <a href="#" (click)="changeTodolist(false)" role="button">A faire</a>
-  <a href="#" (click)="changeTodolist(true)" role="button">Terminé</a>
+  <a href="#" [class.secondary]="!showIsCompleted && showIsCompleted != undefined" (click)="changeTodolist(false)" role="button">A faire</a>
+  <a href="#" [class.secondary]="showIsCompleted && showIsCompleted != undefined" (click)="changeTodolist(true)" role="button">Terminé</a>
   <ng-container *ngFor="let t of this.todolist">
     <app-todo *ngIf="showIsCompleted == undefined || showIsCompleted==t.isCompleted" [value]="t"/>
   </ng-container>
@@ -38,15 +40,20 @@ import { TodoComponent } from '../todo/todo.component';
 })
 export class TodoListComponent {
 
-  todolist = TODOS;
+  todolist: Todo[] = [];
 
-  showIsCompleted : boolean | undefined = undefined;
+  showIsCompleted: boolean | undefined = undefined;
 
-  constructor(){
+  constructor(private todoService: TodoService){
     console.table(this.todolist);
   }
 
-  changeTodolist(bool:boolean){
+  ngOnInit(): void{
+    this.todoService.getTodoList().subscribe(todos => this.todolist = todos);
+    this.todoService.getTodoById(1).subscribe(todo => console.log(todo));
+  }
+
+  changeTodolist(bool:boolean): void{
     if(this.showIsCompleted!=bool){
       this.showIsCompleted = bool;
       console.log("Affichage de la liste à l'état isCompleted = " + this.showIsCompleted)
