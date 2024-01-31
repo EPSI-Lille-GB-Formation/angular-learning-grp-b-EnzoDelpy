@@ -28,6 +28,15 @@ export class TodoService {
         return of();
       })
     );
-    //map(todos: => todos.find(todo => todo.id == id)))
   }
+
+  deleteTodoById(id: number): void {
+    this.http.delete(`${this.todosUrl}/${id}`).pipe(
+      catchError((error) => {
+        console.log(error);
+        return of();
+      })
+    )
+  }
+
 }

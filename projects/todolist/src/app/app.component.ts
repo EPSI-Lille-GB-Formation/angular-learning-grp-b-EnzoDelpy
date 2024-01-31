@@ -10,7 +10,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet,HoverBorderDirective,TodoListComponent],
   template : `
-  <app-todolist/>
+  <router-outlet></router-outlet>
   `,
   styles : []
 
