@@ -1,1 +1,26 @@
+<nav class="bg-white shadow dark:bg-amber-600">
+    <div class="container flex items-center justify-center p-6 mx-auto text-gray-600 capitalize dark:text-gray-300">
+        <a routerLink="/" routerLinkActive="border-gray-100 dark:text-gray-100"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-100 hover:border-gray-100 mx-1.5 sm:mx-6">Accueil</a>
+
+        <a routerLink="/login" routerLinkActive="border-gray-100 dark:text-gray-100"
+            class="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-100 hover:border-gray-100 mx-1.5 sm:mx-6">Mes
+            livres</a>
+
+
+
+
+        <a href="#" class="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-100 ml-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+
+
+        </a>
+    </div>
+</nav>
+
 <router-outlet></router-outlet>
